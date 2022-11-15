@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mainBody .container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.mainBody .container .bgimg {
+  width: 62.5%;
+  height: 100%;
+  background-image: url(https://abs.twimg.com/sticky/illustrations/lohp_850x623.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainBody .container .bgimg .logo-white {
+  width: 560px;
+  height: 364px;
+}
+.mainBody .container .login-form {
+  width: 768px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+}
+.mainBody .container .login-form .logo {
+  width: 80px;
+  margin-bottom: 20px;
+}
