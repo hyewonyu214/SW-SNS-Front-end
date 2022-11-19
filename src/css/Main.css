@@ -35,3 +35,51 @@
   width: 80px;
   margin-bottom: 20px;
 }
+.mainBody .container .login-form .int-area {
+  width: 400px;
+  position: relative;
+  margin-top: 20px;
+}
+.mainBody .container .login-form .int-area input {
+  width: 100%;
+  padding: 20px 10px 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #999;
+  font-size: 18px;
+  color: black;
+  outline: none;
+}
+.mainBody .container .login-form .int-area label {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 18px;
+  color: #999;
+  transition: top 0.5s ease;
+}
+.mainBody .container .login-form .int-area label.warning {
+  color: red !important;
+  animation: warning 0.3s ease;
+  animation-iteration-count: 2;
+}
+@keyframes warning {
+  0% {
+    transform: translateX(-4px);
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+.mainBody .container .login-form .int-area input:focus + label,
+.mainBody .container .login-form .int-area input:valid + label {
+  top: -2px;
+  font-size: 13px;
+  color: #166cea;
+}
