@@ -1,4 +1,4 @@
-import React, { UseRef, UseState } from "react";
+import React, { UseRef, useState, UseState } from "react";
 import "../css/Main.css";
 import axios from "axios";
 
@@ -58,6 +58,44 @@ const Main = ({ getAuth }) => {
   const ckPwIdRef = UseRef();
   const idCkEmailRef = UseRef();
   const pwCkEmailRef = UseRef();
+
+  //회원가입 제한
+  const [mb_id, setMb_id] = useState("");
+  const [mb_pw, setMb_pw] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [mb_nick, setMb_nick] = useState("");
+
+  const [auth, setAuth] = useState(false);
+  const [checkAuth, setCheckAuth] = useState("");
+
+  const [userIdError, setUserIdError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [userNameError, setUserNameError] = useState(false);
+  const [ckId, setCkId] = useState(false);
+  const [ckNick, setCkNick] = useState(false);
+
+  const [authError, setAuthError] = useState(false);
+
+  const onChangeId = (e) => {
+    const userIdRegex = /^[A-Za-z0-9+]{6,16}$/;
+    if (!e.target.value || userIdRegex.test(e.target.value))
+      setUserIdError(false);
+    else setUserIdError(true);
+    setMb_id(e.target.value);
+  };
+  const onChangePassword = (e) => {
+    const passwordRegex =
+      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+    if (!e.target.value || passwordRegex.test(e.target.value))
+      setPasswordError(false);
+    else setPasswordError(true);
+
+    if (!confirmPassword || e.target.value === confirmPassword)
+      setConfirmPasswordError(false);
+    else setConfirmPasswordError(true);
+    setMb_pw(e.target.value);
+  };
 
   return (
     //Main UX/UI
