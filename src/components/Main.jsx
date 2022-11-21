@@ -400,10 +400,130 @@ const Main = ({ getAuth }) => {
                   </p>
                 </div>
               )}
+
+              <label>비밀번호 재확인</label>
+              <input
+                maxLength={16}
+                type="password"
+                value={confirmPassword}
+                onChange={onChangePasswordConfirm}
+                placeholder="비밀번호 확인"
+              />
+              {confirmPasswordError && (
+                <div className="invalid-inpit">
+                  <p className="error">비밀번호가 일치하지 않습니다.</p>
+                </div>
+              )}
+
+              <lable>닉네임</lable>
+              <input
+                maxLength={12}
+                className="shortInput"
+                ref={nickRef}
+                value={mb_nick}
+                onChange={onChangeNick}
+                type="text"
+                placeholder="닉네임을 입력해주세요"
+              />
+              <button onClick={checkNick}>중복확인</button>
+              {userNameError && (
+                <div className="invalid-input">
+                  <p className="error">2자~12자 입력해주세요</p>
+                </div>
+              )}
+
+              <label>복인확인 이메일</label>
+              <input
+                required
+                type="email"
+                ref={emailRef}
+                placeholder="이메일을 입력해주세요"
+              />
+              <input
+                maxLength={8}
+                className="checkInput shortInput"
+                onChange={onChangeAuth}
+                type="text"
+                placeholder="인증번호를 입력해주세요"
+              />
+              <button onClick={sendEmail}>인증번호받기</button>
+              {authError && (
+                <div className="invalid-input">
+                  <p className="error">인증번호가 같지않습니다</p>
+                </div>
+              )}
+              <input onClick={onSubmit} type="submit" value="가입하기" />
             </form>
+          </div>
+          <p>
+            이미 아이디가 있으신가요? <a href="">Login Here</a>
+          </p>
+        </div>
+      </div>
+
+      {/* 아이디 찾기 구간 */}
+      <div className={!isActiveId ? "scrollShow" : "scrollHidden"}>
+        <div className={!isActiveId ? "idModalHidden" : "idModalShow"}>
+          <div className="card">
+            <div className="left">
+              <h1>IT time</h1>
+              <p>
+                IT time에 오신것을 환영합니다. 예비 개발자 분들을 위한 IT
+                time에서 실력을 키워보세요
+              </p>
+              <span>Did you forget your password?</span>
+              <button onClick={findPw} className="left_button">
+                Find Pw
+              </button>
+            </div>
+            <div className="right">
+              <div className="back">
+                <a href="">✖</a>
+              </div>
+              <div>
+                <h1 className="right_top">Find ID</h1>
+              </div>
+              <div>
+                <form className="right_form">
+                  <input
+                    required
+                    className="right_input"
+                    type="email"
+                    ref={idCkEmailRef}
+                    placeholder="Email을 입력해주세요"
+                  />
+                  <input
+                    maxLength={8}
+                    className="right_input"
+                    onChange={onChangeAuth}
+                    type="text"
+                    placeholder="인증번호를 입력해주세요"
+                  />
+                  {authError && (
+                    <div className="invalid-input">
+                      <p className="error">인증번호가 같지않습니다</p>
+                    </div>
+                  )}
+                  <div className="button">
+                    <button onClick={idCkEmail} className="right_button">
+                      인증번호 받기
+                    </button>
+                    <button
+                      className="right_button"
+                      onClick={findIdSubmit}
+                      type="submit"
+                    >
+                      아이디 찾기
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* 비번 찾기 구간 */}
     </div>
   );
 };
