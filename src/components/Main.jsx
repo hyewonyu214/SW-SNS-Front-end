@@ -3,7 +3,7 @@ import axios from "axios";
 import "../css/Main.css";
 import "../css/FindId.css";
 import "../css/FindPw.css";
-
+import "../css/SignUp.css";
 const Main = ({ getAuth }) => {
   const idRef = useRef();
   const pwRef = useRef();
