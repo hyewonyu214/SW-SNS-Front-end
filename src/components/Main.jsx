@@ -1,10 +1,12 @@
-import React, { UseRef, useState, UseState } from "react";
-import "../css/Main.css";
+import React, { useRef, useState } from "react";
 import axios from "axios";
+import "../css/Main.css";
+import "../css/FindId.css";
+import "../css/FindPw.css";
 
 const Main = ({ getAuth }) => {
-  const idRef = UseRef();
-  const pwRef = UseRef();
+  const idRef = useRef();
+  const pwRef = useRef();
 
   const btn = (e) => {
     e.preventDefault();
@@ -40,8 +42,8 @@ const Main = ({ getAuth }) => {
       });
   }
 
-  //signUp 구간
-  const [isActive, setIsActive] = UseState(false);
+  // signUp 구간 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  const [isActive, setIsActive] = useState(false);
   const signUp = (e) => {
     e.preventDefault();
     if (!isActive) {
@@ -51,13 +53,13 @@ const Main = ({ getAuth }) => {
     }
   };
 
-  const signUpIdRef = UseRef();
-  const signUpPwRef = UseRef();
-  const nickRef = UseRef();
-  const emailRef = UseRef();
-  const ckPwIdRef = UseRef();
-  const idCkEmailRef = UseRef();
-  const pwCkEmailRef = UseRef();
+  const signUpIdRef = useRef();
+  const signUpPwRef = useRef();
+  const nickRef = useRef();
+  const emailRef = useRef();
+  const ckPwIdRef = useRef();
+  const idCkEmailRef = useRef();
+  const pwCkEmailRef = useRef();
 
   //회원가입 제한
   const [mb_id, setMb_id] = useState("");
@@ -98,12 +100,13 @@ const Main = ({ getAuth }) => {
   };
   const onChangePasswordConfirm = (e) => {
     if (mb_pw === e.target.value) setConfirmPasswordError(false);
-    else setConfirmPasswordError / true;
+    else setConfirmPasswordError(true);
     setConfirmPassword(e.target.value);
   };
+
   const onChangeNick = (e) => {
-    const userNameRegex = /^[ㄱ-ㅎ|가-힣]a-Z|A-Z|0-9|]{2,12}$/;
-    if (!e.target.value || userNameRegex.text(e.target.value))
+    const userNameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]{2,12}$/;
+    if (!e.target.value || userNameRegex.test(e.target.value))
       setUserNameError(false);
     else setUserNameError(true);
     setMb_nick(e.target.value);
@@ -225,24 +228,20 @@ const Main = ({ getAuth }) => {
             window.location.reload();
           }
         })
-        .catch(function (res) {
-          if (res.data === "success") {
-            alert("회원가입에 성공하셨습니다!!");
-            window.location.reload();
-          }
-        })
         .catch(function (error) {
           alert("회원가입에 실패했습니다");
         });
     } else if (!ckId) {
       alert("아이디 중복 확인 해주세요");
     } else if (!ckNick) {
-      alert("닉네임 중복 확인 해주세요");
+      alert("닉네임 중복 환인 해주세요");
     } else {
     }
   };
 
-  //id찾기, pw 찾기
+  // id찾기, pw찾기
+  // id찾기, pw찾기
+
   const [isActiveId, setIsActiveId] = useState(false);
   const findId = (e) => {
     e.preventDefault();
@@ -255,7 +254,7 @@ const Main = ({ getAuth }) => {
     e.preventDefault();
     if (auth) {
       axios
-        .post("/ittme/findid", {
+        .post("/ittime/findid", {
           mb_email: idCkEmailRef.current.value,
         })
         .then(function (res) {
@@ -295,7 +294,6 @@ const Main = ({ getAuth }) => {
   };
 
   return (
-    //Main UX/UI
     <div className="mainBody">
       <div className="container">
         <div className="bgimg">
@@ -305,7 +303,6 @@ const Main = ({ getAuth }) => {
           <img className="logo" src="/img/logo.png"></img>
           <form action="">
             <div className="int-area">
-              {/* id제약조건 */}
               <input
                 maxLength={16}
                 type="text"
@@ -359,13 +356,15 @@ const Main = ({ getAuth }) => {
         </section>
       </div>
 
-      {/* signUp 구간 */}
+      {/* signup 구간 */}
+      {/* signup 구간 */}
+
       <div className={!isActive ? "scrollShow" : "scrollHidden"}>
         <div className={!isActive ? "modalHidden" : "modalShow"}>
           <div className="sign-up">
             <form className="signup-form" action="">
-              <h1>It ITME</h1>
-              <h4>It;s free and only takes a minute</h4>
+              <h1>IT TIME</h1>
+              <h4>It's free and only takes a minute</h4>
 
               <label>아이디</label>
               <input
@@ -380,14 +379,14 @@ const Main = ({ getAuth }) => {
               <button onClick={checkId}>중복확인</button>
               {userIdError && (
                 <div className="invalid-input">
-                  <p className="error">아이디는 6~16자 입니다.</p>
+                  <p className="error">아이디는 6~16자입니다.</p>
                 </div>
               )}
 
               <label>비밀번호</label>
               <input
                 maxLength={16}
-                type="passwprd"
+                type="password"
                 ref={signUpPwRef}
                 value={mb_pw}
                 onChange={onChangePassword}
@@ -407,15 +406,15 @@ const Main = ({ getAuth }) => {
                 type="password"
                 value={confirmPassword}
                 onChange={onChangePasswordConfirm}
-                placeholder="비밀번호 확인"
+                placeholder="비밀번호확인"
               />
               {confirmPasswordError && (
-                <div className="invalid-inpit">
+                <div className="invalid-input">
                   <p className="error">비밀번호가 일치하지 않습니다.</p>
                 </div>
               )}
 
-              <lable>닉네임</lable>
+              <label>닉네임</label>
               <input
                 maxLength={12}
                 className="shortInput"
@@ -428,11 +427,11 @@ const Main = ({ getAuth }) => {
               <button onClick={checkNick}>중복확인</button>
               {userNameError && (
                 <div className="invalid-input">
-                  <p className="error">2자~12자 입력해주세요</p>
+                  <p className="error">2자 ~ 12자 입력해주세요</p>
                 </div>
               )}
 
-              <label>복인확인 이메일</label>
+              <label>본인확인 이메일</label>
               <input
                 required
                 type="email"
@@ -462,6 +461,8 @@ const Main = ({ getAuth }) => {
       </div>
 
       {/* 아이디 찾기 구간 */}
+      {/* 아이디 찾기 구간 */}
+
       <div className={!isActiveId ? "scrollShow" : "scrollHidden"}>
         <div className={!isActiveId ? "idModalHidden" : "idModalShow"}>
           <div className="card">
@@ -506,7 +507,7 @@ const Main = ({ getAuth }) => {
                   )}
                   <div className="button">
                     <button onClick={idCkEmail} className="right_button">
-                      인증번호 받기
+                      인증번호받기
                     </button>
                     <button
                       className="right_button"
@@ -524,6 +525,78 @@ const Main = ({ getAuth }) => {
       </div>
 
       {/* 비번 찾기 구간 */}
+      {/* 비번 찾기 구간 */}
+
+      <div className={!isActivePw ? "scrollShow" : "scrollHidden"}>
+        <div className={!isActivePw ? "pwModalHidden" : "pwModalShow"}>
+          <div className="card">
+            <div className="left">
+              <div>
+                <h1>Find PW</h1>
+              </div>
+              <div>
+                <form>
+                  <input
+                    maxLength={16}
+                    ref={ckPwIdRef}
+                    type="text"
+                    placeholder="아이디를 입력해주세요"
+                  />
+                  <input
+                    required
+                    className="right_input"
+                    type="email"
+                    ref={pwCkEmailRef}
+                    placeholder="Email을 입력해주세요"
+                  />
+                  <input
+                    maxLength={8}
+                    className="right_input"
+                    onChange={onChangeAuth}
+                    type="text"
+                    placeholder="인증번호를 입력해주세요"
+                  />
+                  {authError && (
+                    <div className="invalid-input">
+                      <p className="error">인증번호가 같지않습니다</p>
+                    </div>
+                  )}
+                  <div className="button">
+                    <button onClick={pwCkEmail}>인증번호 받기</button>
+                    <button onClick={findPwSubmit} type="submit">
+                      비밀번호 찾기
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="right">
+              <div className="back">
+                <a href="">✖</a>
+              </div>
+              <div className="body">
+                <div>
+                  <h1>IT time</h1>
+                </div>
+                <div>
+                  <p>
+                    IT time에 오신것을 환영합니다. 예비 개발자 분들을 위한 IT
+                    time에서 실력을 키워보세요
+                  </p>
+                </div>
+                <div>
+                  <span>Did you forget your ID?</span>
+                </div>
+                <div>
+                  <button onClick={findId} type="button">
+                    Find ID
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

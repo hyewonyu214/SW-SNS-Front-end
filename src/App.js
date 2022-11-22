@@ -1,6 +1,9 @@
-import { useState } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import "../src/css/App.css";
+import AnimateRoutes from "./components/AnimateRoutes";
 import Main from "./components/Main";
+import Header from "./layout/Header";
+import Left from "./layout/Left";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -16,16 +19,48 @@ function App() {
     sessionStorage.setItem("mode", "lightMode");
     setAuth("로그인성공");
   };
+
+  useEffect(() => {
+    sessionStorage.getItem("id") !== null && setUser(true);
+  }, [auth]);
+
+  const [mode, setMode] = useState(sessionStorage.getItem("mode"));
+  const getMode = (data) => {
+    setMode(data);
+    sessionStorage.setItem("mode", data);
+  };
+
+  const [headerName, setHeaderName] = useState("Home");
+  const getHeaderName = (data) => {
+    setHeaderName(data);
+  };
+
   return (
     <div className="AppBody">
       {!user ? (
         <Main getAuth={getAuth} />
       ) : (
-        // <div className={`HomeBody ${mode}`}>
-        <div className="leftBar">
-          <div className="fixed"></div>
+        <div className={`HomeBody ${mode}`}>
+          <div className="leftBar">
+            <div className="fixed">
+              <Left
+                mode={mode}
+                getMode={getMode}
+                getHeaderName={getHeaderName}
+              />
+            </div>
+          </div>
+          <div className="body">
+            <div className="headerBar">
+              <div className="fixed">
+                <Header headerName={headerName} />
+              </div>
+            </div>
+          </div>
+          <div className="view">
+            <AnimateRoutes />
+          </div>
         </div>
-        // </div>
       )}
     </div>
   );
