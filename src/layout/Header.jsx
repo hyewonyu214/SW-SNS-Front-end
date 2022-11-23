@@ -1,7 +1,91 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faHouse,
+  faSignsPost,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faComments,
+  faPenToSquare,
+} from "@fortawesome/free-regular-svg-icons";
 
-const Header = () => {
-  return <div></div>;
+import "../layout/Header.css";
+
+const Header = ({ headerName }) => {
+  const navigate = useNavigate();
+  const [page, setPage] = useState("Home");
+  const nick = sessionStorage.getItem("nick");
+  const searchRef = useRef();
+
+  const movePage = (e) => {
+    e.preventDefault();
+    const inHtml = e.target.innerHTML;
+    const inLH4 = inHtml.substr(inLH4 + 9);
+    const subL = inHtml.substr(inLH4 + 9);
+    const inRH4 = subL.indexOf("<");
+    const subR = subL.substr(0, inRH4);
+    setPage(subR);
+    switch (subR) {
+      case "Home":
+        navigate("/");
+        break;
+      case "Profile":
+        navigate(`/profile${nick}`);
+        break;
+      case "Message":
+        navigate("/message");
+        break;
+      case "Write":
+        navigate("/write");
+        break;
+      case "Post":
+        navigate("/write");
+        break;
+    }
+  };
+  useEffect(() => {
+    setPage(headerName);
+  }, [headerName]);
+
+  function logout() {
+    sessionStorage.clear();
+    navigate("/");
+  }
+  const search = () => {
+    navigate(`/search${searchRef.current.value}`);
+  };
+
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      search();
+    }
+  };
+
+  return (
+    <div className="headerBody">
+      <div className="page">{page}</div>
+      <div className="menu">
+        <ul className="menuLinks">
+          <li onClick={movePage} className="navLink">
+            <a href="" className="headerHome">
+              <FontAwesomeIcon icon={faHouse} className="icon" />
+              <span className="text navText">Home</span>
+            </a>
+          </li>
+          <li onClick={movePage} className="navLink">
+            <a href="" className="headerProfile">
+              <FontAwesomeIcon icon={faUser} className="icon headerProfile" />
+              <span className="text navText">Profile</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default Header;

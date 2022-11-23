@@ -1,9 +1,19 @@
-import { useEffect, useState } from "react";
 import "../src/css/App.css";
-import AnimateRoutes from "./components/AnimateRoutes";
+import "../src/css/Main.css";
+import "../src/css/SignUp.css";
+import "../src/css/FindId.css";
+import "../src/css/FindPw.css";
 import Main from "./components/Main";
 import Header from "./layout/Header";
 import Left from "./layout/Left";
+
+import { useEffect, useState } from "react";
+import AnimateRoutes from "./components/AnimateRoutes";
+
+<script
+  src="https://kit.fontawesome.com/468fac8028.js"
+  crossorigin="anonymous"
+></script>;
 
 function App() {
   const [user, setUser] = useState(false);

@@ -60,3 +60,48 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+.sign-up .signup-form h4 {
+  text-align: center;
+}
+.sign-up .signup-form label {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 4px;
+  margin-left: 4px;
+  font-weight: bold;
+}
+.sign-up .signup-form .shortInput {
+  width: 73%;
+  margin-right: 2%;
+}
+.sign-up .signup-form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 6px;
+}
+.sign-up input[type="submit"] {
+  width: 400px;
+  height: 35px;
+  margin-top: 50px;
+  border: none;
+  background-color: #4dbcef;
+  color: white;
+  font-size: 18px;
+}
+.sign-up .signup-form button {
+  width: 25%;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4dbcef;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sign-up .signup-form input:last-child {
+  cursor: pointer;
+}
