@@ -82,7 +82,47 @@ const Header = ({ headerName }) => {
               <span className="text navText">Profile</span>
             </a>
           </li>
+          <li onClick={movePage} className="navLink">
+            <a href="" className="headerMessage">
+              <FontAwesomeIcon
+                icon={faComments}
+                className="icon headerMessage"
+              />
+              <span className="text navText">Message</span>
+            </a>
+          </li>
+          <li onClick={movePage} className="navLink">
+            <a href="" className="headerWrite">
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                className="icon headerWrite"
+              />
+              <span className="text navText">Write</span>
+            </a>
+          </li>
+          <li onClick={logout} className="navLink">
+            <a href="">
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                className="icon"
+              />
+              <span className="text navText">Logout</span>
+            </a>
+          </li>
         </ul>
+      </div>
+      <div className="search">
+        <input
+          onKeyDown={onKeyPress}
+          ref={searchRef}
+          type="text"
+          placeholder="Search"
+        ></input>
+        <FontAwesomeIcon
+          onClick={search}
+          className="icon"
+          icon={faMagnifyingGlass}
+        />
       </div>
     </div>
   );

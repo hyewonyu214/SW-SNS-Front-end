@@ -1,0 +1,27 @@
+@media screen and (max-width: 1053px) {
+  .headerBody .search {
+    opacity: 0;
+    display: none;
+  }
+  .headerBody .menu {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    transition: all 0.3s;
+  }
+}
+@media screen and (min-width: 1053px) {
+  .headerBody .menu {
+    visibility: hidden;
+    width: 0vw;
+    opacity: 0;
+  }
+}
+.headerBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: var(--sidebar-color);
+  transition: var(--tran-05);
+}
