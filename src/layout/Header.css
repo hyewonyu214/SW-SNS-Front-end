@@ -25,3 +25,84 @@
   background: var(--sidebar-color);
   transition: var(--tran-05);
 }
+.headerBody .page {
+  font-size: 30px;
+  font-weight: 500;
+  padding-left: 30px;
+  margin-right: 20px;
+  color: var(--text-color);
+}
+.headerBody .search input {
+  width: 230px;
+  outline: none;
+  border: 1px solid black;
+  background: #fff;
+  padding: 6px;
+  height: 32px;
+  border-radius: 30px;
+  font-size: 14px;
+  padding-left: 20px;
+}
+.headerBody .search input {
+  width: 230px;
+  outline: none;
+  border: 1px solid black;
+  background: #fff;
+  padding: 6px;
+  height: 32px;
+  border-radius: 30px;
+  font-size: 14px;
+  padding-left: 20px;
+}
+.headerBody .search input::placeholder {
+  color: #bbb;
+}
+.headerBody .search icon {
+  position: relative;
+  top: 1px;
+  right: 30px;
+  font-size: 14px;
+  color: #bbb;
+  cursor: pointer;
+}
+.headerBody .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headerBody .menu .menuLinks {
+  height: 60px;
+  margin-top: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.headerBody .menu .menuLinks li {
+  padding: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: var(--tran-03);
+}
+.headerBody .menu .menuLinks .icon {
+  min-width: 50px;
+  color: var(--text-color);
+  transition: var(--tran-02);
+  pointer-events: none;
+}
+.headerBody .menu .menuLinks a:hover .icon {
+  color: var(--sidebar-color);
+}
+.headerBody .menu .menuLinks a:hover .icon {
+  color: var(--sidebar-color);
+}
+.headerBody .menu .menuLinks li a:hover {
+  background: var(--primary-color);
+}
+.headerBody .menu .menuLinks .navText {
+  display: none;
+}
