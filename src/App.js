@@ -1,11 +1,11 @@
-import "../src/css/App.css";
-import "../src/css/Main.css";
-import "../src/css/SignUp.css";
-import "../src/css/FindId.css";
-import "../src/css/FindPw.css";
+import "./css/App.css";
+import "./css/Main.css";
+import "./css/SignUp.css";
+import "./css/FindId.css";
+import "./css/FindPw.css";
 import Main from "./components/Main";
-import Header from "./layout/Header";
 import Left from "./layout/Left";
+import Header from "./layout/Header";
 
 import { useEffect, useState } from "react";
 import AnimateRoutes from "./components/AnimateRoutes";
@@ -20,7 +20,6 @@ function App() {
   const [auth, setAuth] = useState("");
 
   const getAuth = (data) => {
-    // sessionStorage는 브라우저 창이 닫히면 세션이 종료되면서 storage에 저장된 데이터도 소멸됩니다.
     sessionStorage.setItem("id", data.mb_id);
     sessionStorage.setItem("nick", data.mb_nick);
     sessionStorage.setItem("email", data.mb_email);
@@ -66,9 +65,9 @@ function App() {
                 <Header headerName={headerName} />
               </div>
             </div>
-          </div>
-          <div className="view">
-            <AnimateRoutes />
+            <div className="view">
+              <AnimateRoutes />
+            </div>
           </div>
         </div>
       )}

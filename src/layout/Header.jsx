@@ -24,7 +24,7 @@ const Header = ({ headerName }) => {
   const movePage = (e) => {
     e.preventDefault();
     const inHtml = e.target.innerHTML;
-    const inLH4 = inHtml.substr(inLH4 + 9);
+    const inLH4 = inHtml.indexOf("navText");
     const subL = inHtml.substr(inLH4 + 9);
     const inRH4 = subL.indexOf("<");
     const subR = subL.substr(0, inRH4);
@@ -43,7 +43,7 @@ const Header = ({ headerName }) => {
         navigate("/write");
         break;
       case "Post":
-        navigate("/write");
+        navigate("/post");
         break;
     }
   };
@@ -55,6 +55,7 @@ const Header = ({ headerName }) => {
     sessionStorage.clear();
     navigate("/");
   }
+
   const search = () => {
     navigate(`/search${searchRef.current.value}`);
   };
@@ -98,6 +99,12 @@ const Header = ({ headerName }) => {
                 className="icon headerWrite"
               />
               <span className="text navText">Write</span>
+            </a>
+          </li>
+          <li onClick={movePage} className="navLink">
+            <a href="" className="headerPost">
+              <FontAwesomeIcon icon={faSignsPost} className="icon headerPost" />
+              <span className="text navText">Post</span>
             </a>
           </li>
           <li onClick={logout} className="navLink">
