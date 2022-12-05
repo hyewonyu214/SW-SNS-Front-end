@@ -20,3 +20,7 @@ SW 예비개발자들을 위한 SNS구축 시작합니다!
 1. npm i @fortawesome/fontawesome-svg-core
 2. npm i @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
 3. npm i @fortawesome/react-fontawesome
+
+**리액트 퀼 설치**
+
+1. npm install react-quill

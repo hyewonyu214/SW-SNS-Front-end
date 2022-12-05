@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "../css/Write.css";
-//리액트 퀼npm 설치하기
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { motion } from "framer-motion";

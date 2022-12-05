@@ -51,7 +51,7 @@
   font-weight: 600;
   color: var(--text-color);
   transition: var(--tran-05);
-  white-space: norwrap;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -95,11 +95,11 @@
   color: var(--text-color);
   transition: var(--tran-02);
 }
-
 .leftSidebar li a:hover .icon,
 .leftSidebar li a:hover .leftText {
   color: var(--sidebar-color);
 }
+
 .leftSidebar .leftMenuBar {
   height: calc(100% - 53px);
   display: flex;
@@ -120,14 +120,12 @@
   display: flex;
   align-items: center;
 }
-.leftMenuBar .leftMode .moon-sun {
-  height: 50px;
-  width: 55px;
-  display: flex;
-  align-items: center;
-}
 .leftMenuBar .leftMode .icon {
   position: absolute;
+}
+.leftMenuBar .leftMode.lightMode .iSun {
+  opacity: 0;
+  transition: var(--tran-02);
 }
 .leftMenuBar .leftMode.darkMode .iMoon {
   opacity: 0;

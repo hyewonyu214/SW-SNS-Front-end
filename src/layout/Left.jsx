@@ -101,6 +101,12 @@ const Left = ({ mode, getMode, getHeaderName }) => {
             </li>
             <li onClick={movePage} className="leftNavLink">
               <a href="">
+                <FontAwesomeIcon icon={faPenToSquare} className="icon" />
+                <span className="leftText leftNavText">Write</span>
+              </a>
+            </li>
+            <li onClick={movePage} className="leftNavLink">
+              <a href="">
                 <FontAwesomeIcon icon={faSignsPost} className="icon" />
                 <span className="leftText leftNavText">Post</span>
               </a>
