@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+//
 const Write = () => {
   const mb_nick = sessionStorage.getItem("nick");
   const navigate = useNavigate();
